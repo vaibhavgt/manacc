@@ -1,0 +1,30 @@
+<h1> Showing last 10 Transactions </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th width="200">Transaction Date</th>
+      <th width="100">Credit/Debit &nbsp (Rs)</th>
+      <th width="100">Balance</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <%@transactions.each do |transaction| %>
+    <tr>
+      <td><%= transaction.created_at.strftime("%b %e, %l:%M %p") %></td>
+      	<%if(transaction.type == "IncomeTransaction") %>
+      	 <td>
+      	  <%="#{transaction.amount}" %>
+      	</td>
+      	<%else%>
+      	<td>
+      		<%= "-#{transaction.amount}" %>
+      	</td>
+      	<% end %>
+      <td><%= "#{transaction.current_balance}" %></td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>
+

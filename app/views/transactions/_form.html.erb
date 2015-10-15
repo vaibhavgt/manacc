@@ -1,0 +1,21 @@
+<%= form_for @transaction do |f| %>
+	<% if @transaction.errors.any? %>
+	<div id="error_explanation">
+		<h4><%= pluralize(@transaction.errors.count, "error") %>
+			prohibited the Category from being saved:</h4>
+		<ul>
+			<% @transaction.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+		<% end %>
+	<p>
+	<%= f.label :amount, "Please Enter amount" %><br>
+	<%= f.text_field :amount %>
+	</p>
+	<p> Choose from Category </p>
+	<%= select_tag("transaction[category_id]", options_for_select(categories_arr(@cat_arr))) %>
+	<%= hidden_field_tag(:type,  @type) %>
+	<%= f.submit %>
+<% end %>

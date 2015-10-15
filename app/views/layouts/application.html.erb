@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Account Management" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <nav class="top-bar">
+     <ul class="title-area">
+      <li class="name">
+      <h1><a href = "/">Manage Accounts</a></h1>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <% if user_signed_in? %>
+      <li> logged in as <%= current_user.name %></li>
+      <li class="divider"></li>
+      <li><%= link_to "logout", destroy_user_session_path, method: :delete%></li>
+      <%else%>
+      <li class="divider"></li>
+      <li><%= link_to "Sign up", new_user_registration_path %></li>
+       <li class="divider"></li>
+      <li><%= link_to "login", new_user_session_path %></li>
+      <%end%>
+    </ul>
+  </section>
+  </nav>
+
+    <div class = "row">
+      <div class = "large-8 columns">
+      
+      <div class="panel callout radius">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      <%= yield %>
+      </div>
+      <div class = "large-4 columns">
+      </div>
+    </div>
+
+  </body>
+</html>

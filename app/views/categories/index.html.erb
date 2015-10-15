@@ -1,0 +1,25 @@
+
+<h1> All Categories </h1>
+<table>
+  <thead>
+    <tr>
+    <th width="250">Source</th>
+      <th width="200">Type</th>
+      <th width="200">Action</th>
+      <!--<th width="200">Action</th> -->
+    </tr>
+  </thead>
+  <tbody> 
+  <tr>
+<% @categories.each do |category| %>
+<tr>
+<td> <%=category.source %> </td>
+<td> <%=category.type %> </td>
+ <td> <%=link_to "Edit Category",edit_user_category_path(@user, category) %> </td>
+ <!--<td><%#=link_to "Delete Category", user_category_path(@user, category), method: :delete, data: { confirm: 'Are you sure?' }%> </td> -->
+<tr>
+<% end %>
+  </tbody>
+</table>
+<p class = "button tiny secondary radius"> <%=link_to "New Category",new_user_category_path %> </p>
+

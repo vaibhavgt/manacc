@@ -1,0 +1,29 @@
+<%= form_for [@user, @category] do |f| %>
+	<% if @category.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@category.errors.count, "error") %>
+			prohibited this ticket from being saved:</h2>
+		<ul>
+			<% @category.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+		<% end %>
+	<p>
+	<%= f.label :source %><br>
+	<%= f.text_field :source %>
+	</p>
+	<p>
+	<%= f.label :description %><br>
+	<%= f.text_area :description %>
+	</p>
+
+	<p>
+	<%= radio_button_tag(:type, "IncomeCategory") %>
+	<%= label_tag(:type, "Income") %>
+	<%= radio_button_tag(:type, "ExpenseCategory") %>
+	<%= label_tag(:type, "Expense") %>
+	</p>
+	<%= f.submit %>
+<% end %>

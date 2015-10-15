@@ -1,0 +1,11 @@
+<h1> Transactions </h1>
+
+
+<%=form_tag({controller: "transactions", action: "new"}, method: "get")  do %>
+  <p> Add Income/ Expense</p>
+  <%= select_tag("type", options_for_select([['Income', 1], ['expense', 2]])) %>
+  <%= submit_tag("Done")%>
+  <% end %>
+  
+
+

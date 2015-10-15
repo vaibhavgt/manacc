@@ -1,0 +1,14 @@
+<h3> Hi user, Welcome to account mangement System </h3>
+
+  <% if user_signed_in? %>
+  
+  	<p class = "button secondary radius"><%= link_to "Add Expense or Income" , {controller: :transactions, action: "add"} %> <p>
+  	<hr>
+  	<p class = "button secondary radius"><%= link_to "Manage Income/Expenditure Categories", user_categories_path(current_user) %> </p>
+  	<hr>
+  	<p class = "button secondary radius"><%= link_to "View transactions",transactions_path %> </p>
+  	<p class = "button radius secondary"> <%= link_to "Generate Reports" %>
+  <% else %>
+  	<p> Please login to continue </p>
+  	<p class = "button secondary radius"><%= link_to "login", new_user_session_path %></li>
+  <% end %>
