@@ -11,14 +11,18 @@
 #
 default: &default
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   pool: 5
-  #username: root
-  #password: "vaib8909"
-  #socket: /var/run/mysqld/mysqld.sock
+
 
 development:
   <<: *default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: "vaib8909"
+  socket: /var/run/mysqld/mysqld.sock
   database: manaccdb_dev
 
 # Warning: The database defined as "test" will be erased and
@@ -49,6 +53,7 @@ test:
 #
 production:
   <<: *default
+
   database: manaccdb_prod
   username: db
   password: <%= ENV['DB_DATABASE_PASSWORD'] %>

@@ -22,7 +22,7 @@
   <section class="top-bar-section">
     <ul class="right">
       <% if user_signed_in? %>
-      <li> logged in as <%= current_user.name %></li>
+      <li> <a href = "/">logged in as <%= current_user.name %></a> </li>
       <li class="divider"></li>
       <li><%= link_to "logout", destroy_user_session_path, method: :delete%></li>
       <%else%>

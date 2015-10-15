@@ -6,4 +6,5 @@ class Category < ActiveRecord::Base
 	validates :source, presence: true
 	validates :source, length: { minimum: 5 }
 	validates :description, length: { minimum: 10}, allow_blank: true
+	validates :type, presence: true
 end
